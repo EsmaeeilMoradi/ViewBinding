@@ -2,30 +2,73 @@ package com.esm.viewbinding
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.esm.viewbinding.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
+    private var value = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//        val myTextView : TextView = findViewById<TextView>(R.id.myTextView)
-//        myTextView.text = "This is a test"
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnAdd.setOnClickListener(this)
+        binding.btnTake.setOnClickListener(this)
+        binding.btnGrow.setOnClickListener(this)
+        binding.btnShrink.setOnClickListener(this)
+        binding.btnReset.setOnClickListener(this)
+        binding.btnHide.setOnClickListener(this)
+        binding.myTextView.setOnClickListener(this)
 
-        val myBank :Int = 1000
 
-        if (binding.dollarValue.text.isNotEmpty()) {
-            val dollarValue = binding.dollarValue.text.toString().toFloat()
+    }
 
-            val euroValue = myBank * 0.92f
-            binding.euroValue.text = euroValue.toString()
-        }else{
-            binding.euroValue.text=""
+    override fun onClick(v: View) {
+        val size: Float
+        when (v.id) {
+            R.id.btnAdd -> {
+                value++
+                binding.myTextView.text = "$value"
+            }
+
+            R.id.btnTake -> {
+                value--
+                binding.myTextView.text = "$value"
+            }
+
+            R.id.btnReset -> {
+                value = 0
+                binding.myTextView.text = "$value"
+                binding.myTextView.textScaleX = 1.0f
+            }
+
+            R.id.btnShrink -> {
+                size = binding.myTextView.textScaleX
+
+                binding.myTextView.textScaleX = size - 1
+            }
+
+            R.id.btnHide -> {
+
+                if (binding.myTextView.visibility == View.VISIBLE) {
+                    binding.myTextView.visibility = View.GONE
+                    binding.btnHide.text = "SHOW"
+                } else if (binding.myTextView.visibility == View.GONE) {
+                    binding.myTextView.visibility = View.VISIBLE
+                    binding.btnHide.text = "HIDE"
+                }
+
+            }
+
+            R.id.btnGrow -> {
+                size = binding.myTextView.textScaleX
+
+                binding.myTextView.textScaleX = size + 1
+            }
+
         }
-
     }
 }

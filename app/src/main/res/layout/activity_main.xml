@@ -1,36 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/myConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/dollar_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/euro_value"
-        app:layout_constraintEnd_toEndOf="@+id/euro_value"
-        app:layout_constraintStart_toStartOf="@+id/euro_value"
-        app:layout_constraintTop_toTopOf="parent"
+        <TextView
+            android:id="@+id/myTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:text="----------"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        />
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="128dp"
+            android:layout_marginBottom="76dp"
+            android:text="Add"
+            app:layout_constraintBottom_toTopOf="@+id/btnGrow"
+            app:layout_constraintEnd_toStartOf="@+id/btnTake" />
 
-    <TextView
-        android:id="@+id/euro_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@id/dollar_value"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/btnGrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="60dp"
+            android:text="Grow"
+            app:layout_constraintBottom_toTopOf="@+id/btnHide"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Hide"
+            app:layout_constraintBottom_toBottomOf="@+id/btnReset"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnReset" />
+
+        <Button
+            android:id="@+id/btnTake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="76dp"
+            android:text="TAKE"
+            app:layout_constraintBottom_toTopOf="@+id/btnShrink"
+            app:layout_constraintEnd_toEndOf="@+id/btnShrink"
+            app:layout_constraintStart_toStartOf="@+id/btnShrink" />
+
+        <Button
+            android:id="@+id/btnShrink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:text="Shrink"
+            app:layout_constraintBottom_toTopOf="@+id/btnReset"
+            app:layout_constraintEnd_toEndOf="@+id/btnReset"
+            app:layout_constraintStart_toStartOf="@+id/btnReset" />
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="128dp"
+            android:layout_marginBottom="80dp"
+            android:text="Reset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnHide" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
